@@ -9,6 +9,13 @@
 #import "COCSensorDemoObjC.h"
 #import "COCSensorReading.h"
 
+// Makes sure this runs under the Mac OS 10.8 SDK
+@interface NSArray (PrivateStuffWhichWillBePublicSoon)
+- (id)firstObject;
+@end
+
+#pragma mark -
+
 @implementation COCSensorDemoObjC
 {
     NSMutableArray* _readings; // COCSensorReading
@@ -95,7 +102,7 @@
     if(index == 0)
         return ((COCSensorReading*)_readings.firstObject).value;     // we do not extrapolate
     else if(index == _readings.count)
-        return ((COCSensorReading*)_readings.lastObject).value;     // we do not extrapolate
+        return ((COCSensorReading*)_readings.lastObject).value;      // we do not extrapolate
     else
         return [_readings[index-1]
                 interpolatedValueAtTime:time

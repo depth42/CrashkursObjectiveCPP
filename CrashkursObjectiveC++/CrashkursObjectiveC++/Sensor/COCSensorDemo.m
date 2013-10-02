@@ -14,7 +14,7 @@
 {
     if(self = [super init])
     {
-        _defaultTime = [NSDate date].timeIntervalSinceReferenceDate;
+        _defaultTime = [[NSDate date] timeIntervalSinceReferenceDate];
     }
     return self;
 }
